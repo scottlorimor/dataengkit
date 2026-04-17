@@ -33,8 +33,8 @@ A bad component is one where the "right" answer depends entirely on the user's b
 ## Development setup
 
 ```bash
-git clone https://github.com/theoncegreatchamp/data-kit
-cd data-kit
+git clone https://github.com/theoncegreatchamp/dataengkit
+cd dataengkit
 uv sync --extra dev
 uv run pytest
 ```

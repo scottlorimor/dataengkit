@@ -7,7 +7,7 @@ All other dialects go through SQLGlot. "spark" and "databricks" both map to SQLG
 
 from __future__ import annotations
 
-from datakit._exceptions import DialectTranspilationError
+from dataengkit._exceptions import DialectTranspilationError
 
 # Closed set of supported dialects. Unknown dialects raise DialectTranspilationError.
 SUPPORTED_DIALECTS: frozenset[str] = frozenset(
@@ -53,7 +53,13 @@ def transpile(sql: str, dialect: str) -> str:
         import sqlglot
 
         results = sqlglot.transpile(sql, read="duckdb", write=target)
-        return results[0] if results else sql
+        if not results:
+            raise DialectTranspilationError(
+                dialect=dialect,
+                original_sql=sql,
+                cause=ValueError("SQLGlot returned empty output for this SQL"),
+            )
+        return results[0]
     except Exception as exc:
         raise DialectTranspilationError(
             dialect=dialect, original_sql=sql, cause=exc

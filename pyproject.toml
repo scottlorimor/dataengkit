@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "data-kit"
+name = "dataengkit"
 version = "0.1.0"
 description = "The scikit-learn of data engineering and analytics"
 readme = "README.md"
@@ -40,19 +40,19 @@ dev = [
     "pandas-stubs>=2.0",
 ]
 all = [
-    "data-kit[spark]",
+    "dataengkit[spark]",
 ]
 
 [project.urls]
-Homepage = "https://github.com/theoncegreatchamp/data-kit"
-Issues = "https://github.com/theoncegreatchamp/data-kit/issues"
+Homepage = "https://github.com/theoncegreatchamp/dataengkit"
+Issues = "https://github.com/theoncegreatchamp/dataengkit/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/datakit"]
+packages = ["src/dataengkit"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=datakit --cov-report=term-missing"
+addopts = "--cov=dataengkit --cov-report=term-missing"
 
 [tool.ruff]
 line-length = 100

@@ -1,4 +1,4 @@
-"""datakit.engineering — composable data modeling and transformation components.
+"""dataengkit.modeling — composable data modeling and transformation components.
 
 v0.2 components (planned):
   EventSchema   — validates event DataFrames against a taxonomy schema
@@ -11,7 +11,7 @@ v0.3 (planned):
 """
 
 # Components are imported here as they are implemented.
-# from datakit.engineering.event_schema import EventSchema
-# from datakit.engineering.dedup import Dedup
+# from dataengkit.modeling.event_schema import EventSchema
+# from dataengkit.modeling.dedup import Dedup
 
 __all__: list[str] = []

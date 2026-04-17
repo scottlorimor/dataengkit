@@ -1,4 +1,4 @@
-"""datakit.analytics — composable analytics components for B2B SaaS.
+"""dataengkit.analytics — composable analytics components for B2B SaaS.
 
 v0.1 components:
   CohortMatrix      — row-level cohort data (user × period × had_event)
@@ -13,7 +13,7 @@ v0.3 (planned):
 """
 
 # Components are imported here as they are implemented.
-# from datakit.analytics.cohort_matrix import CohortMatrix
-# from datakit.analytics.retention_curve import RetentionCurve
+# from dataengkit.analytics.cohort_matrix import CohortMatrix
+# from dataengkit.analytics.retention_curve import RetentionCurve
 
 __all__: list[str] = []

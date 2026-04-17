@@ -1,6 +1,6 @@
 ---
 name: Component Request
-about: Propose a new data-kit component
+about: Propose a new dataengkit component
 labels: component-request
 ---
 

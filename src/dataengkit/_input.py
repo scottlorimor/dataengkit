@@ -16,7 +16,7 @@ import warnings
 
 import pandas as pd
 
-from datakit._exceptions import DeltaReadError
+from dataengkit._exceptions import DeltaReadError
 
 # Matches SQL query strings (case-insensitive). File paths never start with SELECT/WITH.
 _SQL_RE = re.compile(r"^\s*(SELECT|WITH)\b", re.IGNORECASE)
@@ -64,7 +64,7 @@ def _run_sql(query: str) -> pd.DataFrame:
     try:
         return duckdb.query(query).df()
     except Exception as exc:
-        from datakit._exceptions import SQLRenderError
+        from dataengkit._exceptions import SQLRenderError
 
         raise SQLRenderError(sql=query, cause=exc) from exc
 

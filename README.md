@@ -1,16 +1,16 @@
-# data-kit
+# dataengkit
 
 The scikit-learn of data engineering and analytics.
 
 One library. Two sub-packages. Composable, opinionated Python objects that encode the judgment calls data engineers rebuild at every company.
 
 ```python
-pip install data-kit
+pip install dataengkit
 ```
 
 ```python
-from datakit.analytics import RetentionCurve
-from datakit.engineering import EventSchema, Dedup
+from dataengkit.analytics import RetentionCurve
+from dataengkit.modeling import EventSchema, Dedup
 
 # Validate your events data
 schema = EventSchema(required_columns=["user_id", "event_name", "timestamp"])
@@ -27,16 +27,16 @@ curve.to_sql(dialect="snowflake")  # ready for your dbt model
 
 ## Why
 
-Every B2B SaaS data team rebuilds the same patterns — retention curves, MRR tables, SCD2 dimensions, event funnels — from scratch at every company. `data-kit` encodes those judgment calls once, correctly, and makes them available to anyone with `pip install`.
+Every B2B SaaS data team rebuilds the same patterns — retention curves, MRR tables, SCD2 dimensions, event funnels — from scratch at every company. `dataengkit` encodes those judgment calls once, correctly, and makes them available to anyone with `pip install`.
 
-Like scikit-learn for ML, `data-kit` gives you the algorithm with sane defaults. You describe your data. The library handles the rest.
+Like scikit-learn for ML, `dataengkit` gives you the algorithm with sane defaults. You describe your data. The library handles the rest.
 
 ## Sub-packages
 
 | Sub-package | Components |
 |-------------|-----------|
-| `datakit.analytics` | `RetentionCurve`, `CohortMatrix` (v0.1) — `InvestorMetrics`, `MRRMovement`, `ActivationFunnel` (planned) |
-| `datakit.engineering` | `EventSchema`, `Dedup` (v0.2) — `SCDType2`, `Sessionize`, `DateSpine` (planned) |
+| `dataengkit.analytics` | `RetentionCurve`, `CohortMatrix` (v0.1) — `InvestorMetrics`, `MRRMovement`, `ActivationFunnel` (planned) |
+| `dataengkit.modeling` | `EventSchema`, `Dedup` (v0.2) — `SCDType2`, `Sessionize`, `DateSpine` (planned) |
 
 ## Every component exports
 
@@ -51,9 +51,9 @@ Supported dialects: `duckdb` (default), `snowflake`, `bigquery`, `spark`, `datab
 ## Install
 
 ```bash
-pip install data-kit                 # core
-pip install data-kit[spark]          # + PySpark DataFrame input
-pip install data-kit[delta]          # + Delta table write support
+pip install dataengkit                 # core
+pip install dataengkit[spark]          # + PySpark DataFrame input
+pip install dataengkit[delta]          # + Delta table write support
 ```
 
 Delta table **reading** works with the base install (DuckDB bundles the Delta extension).
@@ -67,3 +67,18 @@ See [ROADMAP.md](ROADMAP.md) for what ships next.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose and implement a new component.
+
+# PyPi steps
+
+### Step 4 — All future releases via git tag
+
+#### Bump version in pyproject.toml and __init__.py, then:
+
+git add -A
+git commit -m "chore: release v0.1.1"
+git tag v0.1.1
+git push origin main --tags
+The publish.yml workflow fires on any v* tag, runs tests, builds, and uploads to PyPI automatically. No tokens ever stored in GitHub secrets.
+
+pip install dataengkit
+python -c "import dataengkit; print(dataengkit.__version__)"

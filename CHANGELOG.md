@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to data-kit are documented here.
+All notable changes to dataengkit are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning: semver `0.MINOR.PATCH`. Pre-v1.0: minor API breaks allowed with entry here.
 
@@ -14,8 +14,8 @@ Versioning: semver `0.MINOR.PATCH`. Pre-v1.0: minor API breaks allowed with entr
 - `_dialect.py` — SQLGlot dialect transpilation (duckdb passthrough + 5 supported dialects)
 - `_input.py` — `resolve_input()` dispatch: pandas / Delta path / SQL string / PySpark
 - `_exceptions.py` — `ValidationError`, `SQLRenderError`, `DialectTranspilationError`, `DeltaReadError`, `DeltaWriteError`, `DeltaConcurrentWriteError`, `SCDGrainError`
-- `datakit.analytics` sub-package skeleton
-- `datakit.engineering` sub-package skeleton
+- `dataengkit.analytics` sub-package skeleton
+- `dataengkit.modeling` sub-package skeleton
 
 ---
 

@@ -7,7 +7,7 @@ import pathlib
 import pandas as pd
 import pytest
 
-from datakit._input import resolve_input
+from dataengkit._input import resolve_input
 
 
 def test_pandas_passthrough() -> None:
@@ -40,14 +40,14 @@ def test_sql_string_with_prefix() -> None:
 
 
 def test_invalid_delta_path_raises_delta_read_error() -> None:
-    from datakit._exceptions import DeltaReadError
+    from dataengkit._exceptions import DeltaReadError
 
     with pytest.raises(DeltaReadError):
         resolve_input("/nonexistent/path/to/delta")
 
 
 def test_invalid_delta_path_object_raises_delta_read_error() -> None:
-    from datakit._exceptions import DeltaReadError
+    from dataengkit._exceptions import DeltaReadError
 
     with pytest.raises(DeltaReadError):
         resolve_input(pathlib.Path("/nonexistent/delta"))

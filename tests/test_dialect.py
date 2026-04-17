@@ -1,11 +1,12 @@
 """Tests for _dialect.py — SQL transpilation."""
 
 from __future__ import annotations
+from unittest.mock import patch
 
 import pytest
 
-from datakit._dialect import SUPPORTED_DIALECTS, transpile
-from datakit._exceptions import DialectTranspilationError
+from dataengkit._dialect import SUPPORTED_DIALECTS, transpile
+from dataengkit._exceptions import DialectTranspilationError
 
 SIMPLE_SQL = "SELECT user_id, COUNT(*) AS cnt FROM events GROUP BY user_id"
 
@@ -37,3 +38,11 @@ def test_spark_and_databricks_both_accepted() -> None:
     result_databricks = transpile(SIMPLE_SQL, "databricks")
     assert isinstance(result_spark, str)
     assert isinstance(result_databricks, str)
+
+
+def test_sqlglot_empty_results_raises() -> None:
+    """If SQLGlot returns an empty list, raise DialectTranspilationError — never silently return DuckDB SQL."""
+    with patch("sqlglot.transpile", return_value=[]):
+        with pytest.raises(DialectTranspilationError) as exc_info:
+            transpile(SIMPLE_SQL, "snowflake")
+    assert "empty output" in str(exc_info.value)

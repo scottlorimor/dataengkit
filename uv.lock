@@ -186,7 +186,7 @@ toml = [
 ]
 
 [[package]]
-name = "data-kit"
+name = "dataengkit"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
@@ -215,7 +215,7 @@ spark = [
 
 [package.metadata]
 requires-dist = [
-    { name = "data-kit", extras = ["spark"], marker = "extra == 'all'" },
+    { name = "dataengkit", extras = ["spark"], marker = "extra == 'all'" },
     { name = "deltalake", marker = "extra == 'delta'", specifier = ">=1.0,<2" },
     { name = "duckdb", specifier = ">=1.1.0" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.9" },
